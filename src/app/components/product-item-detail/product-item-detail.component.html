@@ -1,0 +1,13 @@
+<div *ngIf ="product" class="detail-container">
+    <div class="detail-item">
+        <img src='{{ product.url }}'>
+        <div><b>{{ product.name }}</b></div>
+        <div>${{ product.price }}</div>
+        <div>{{ product.description }}</div>
+        <input type="number" id="quantity" name="quantity" min="1" max="6">
+
+        <div class="product-item-detail">
+            <a routerLink='/'> Return to product list </a>
+        </div>
+    </div>
+</div>
