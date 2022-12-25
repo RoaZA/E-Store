@@ -3,11 +3,11 @@
         <a routerLink='product-item-detail/{{ product.id }}'>
             <img class="product-image" src='{{ product.url }}'>
         </a>
-        <h3>{{ product.name }}</h3>
-        <p> ${{ product.price }}</p>
-       <input type="number" id="quantity" name="quantity" min="1" max="6">
+        <div><h3>{{ product.name }}</h3></div>
+        <div> {{ product.price.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}}</div>
+       <input type="number" id="quantity" name="quantity" [(ngModel)]= "productQuantity" min="1" max="6">
        <br>
-       <button> Add to cart</button>
+       <button (click)="addToCart(product)"> Add to cart</button>
     <!-- </div>
      -->
     <!-- <p>{{ product.description }}</p>     -->
