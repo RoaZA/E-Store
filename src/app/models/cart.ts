@@ -1,4 +1,4 @@
-export interface CartDetails{
+export interface CartDetails {
     id: number,
     amount: number
 

@@ -10,8 +10,19 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(): Observable<Product[]>{
+  getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>('http://localhost:3000/assets/data.json');
+  }
+  savePeoducts(prds: Product[]) {
+    sessionStorage.setItem('products', JSON.stringify(prds));
+  }
+  getProductsFrom(): Product[] {
+    const stringProducts = sessionStorage.getItem('products');
+    if (stringProducts)
+      return JSON.parse(stringProducts);
+    else
+      return [];
+
   }
 
 }

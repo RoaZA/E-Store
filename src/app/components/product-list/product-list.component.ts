@@ -15,9 +15,10 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getProducts().subscribe(res => {
       // as unknown as Product[];
-      this.products = res
+      this.products = res;
+      this.productService.savePeoducts(this.products);
     })
-    //console.log(typeof(this.products[0].name));
+
   }
 
 }

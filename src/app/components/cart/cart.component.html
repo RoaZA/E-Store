@@ -1,2 +1,40 @@
-<p>cart works!</p>
-<app-product-item></app-product-item>
+<div *ngIf="cartProducts.length > 0" class="cart-container">
+    <div class="cart-item-details">
+        <div *ngFor="let product of products" class="cart-item">
+            <img src='{{product.url}}'>
+            <div class="cart-panel">
+                <div><b>{{ product.name}}</b></div>
+                <div>{{ product.price.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}}</div>
+                <div>
+                    Amount: <input type="number" id="quantity" name="quantity" [ngModel]="showAmount(product.id)"
+                        min="1" max="10">
+                </div>
+
+            </div>
+        </div>
+        <div class="cart-item"><b>Total Price: {{ totalPrice.toLocaleString('en-US', {style: 'currency', currency:
+                'USD'})}}</b></div>
+
+    </div>
+    <div class="form-margin">
+        <form class="form-margin" #form="ngForm">
+            <label>Full Name: </label><br>
+            <input type='text' name='firstName' required minlength="3" placeholder="(minimum 3 characters)"
+                [(ngModel)]="firstName">
+            <br />
+            <label>Address: </label><br>
+            <input type='text' name='address' required minlength="6" placeholder="(minimum 6 characters)"
+                [(ngModel)]="address">
+            <br />
+            <label>Credit Card Number: </label><br>
+            <input type='text' name='creditCard' required minlength="16" maxlength="16" placeholder="(16-digit number)"
+                [(ngModel)]="creditCard">
+            <br />
+            <label>We'll never share your payment details with anyone else. </label><br><br>
+            <a routerLink='../confirmation/{{firstName}}/{{totalPrice}}'>
+                <input [disabled]="form.invalid" type='submit' value="Submit" />
+            </a>
+        </form>
+
+    </div>
+</div>

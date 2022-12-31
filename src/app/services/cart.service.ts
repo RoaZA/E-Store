@@ -32,8 +32,9 @@ export class CartService {
     if (cartProducts.length === 0) {
       this.newCart[0].id = prodId;
       this.newCart[0].amount = amount;
-      sessionStorage.clear();
+      //sessionStorage.clear();
       sessionStorage.setItem('cart', JSON.stringify(this.newCart));
+      alert('New Product  has been added to the cart');
 
     }
     else {
@@ -42,16 +43,18 @@ export class CartService {
         if (cartProducts[i].id === prodId) {
           cartProducts[i].amount += amount;
           itemFound = true;
+          alert('a Product amount has been modified');
           break;
         }
       }
       if (!itemFound) {
         this.cartProduct.id = prodId;
         this.cartProduct.amount = amount;
+        alert('New Product  has been added to the cart');
         cartProducts.push(this.cartProduct);
       }
 
-      sessionStorage.clear();
+      //sessionStorage.clear();
       sessionStorage.setItem('cart', JSON.stringify(cartProducts));
     }
 

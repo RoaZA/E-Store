@@ -1,13 +1,13 @@
-<div *ngIf ="product" class="detail-container">
+<div *ngIf="product" class="detail-container">
     <div class="detail-item">
         <img src='{{ product.url }}'>
         <div><b>{{ product.name }}</b></div>
         <div>{{ product.price.toLocaleString('en-US', {style: 'currency', currency: 'USD'})}}</div>
         <div>{{ product.description }}</div>
-        <input type="number" id="quantity" name="quantity" [(ngModel)]= "productQuantity" min="1" max="10">
+        <input type="number" id="quantity" name="quantity" [(ngModel)]="productQuantity" min="1" max="10">
         <br>
         <button (click)="addToCart(product)"> Add to cart</button>
-        <div class="product-item-detail">
+        <div class="back-link">
             <a routerLink='/'> Return to product list </a>
         </div>
     </div>

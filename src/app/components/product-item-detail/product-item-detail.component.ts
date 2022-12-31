@@ -12,7 +12,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class ProductItemDetailComponent implements OnInit {
 
   id: number = -1;
-  product : Product | null = null;
+  product: Product | null = null;
   productQuantity: number = 0;
   constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService) { }
 
@@ -23,11 +23,11 @@ export class ProductItemDetailComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.id = Number(params.get('id'));
     })
- 
-    this.productService.getProducts().subscribe(res =>{
-      if(this.id !== -1){
+
+    this.productService.getProducts().subscribe(res => {
+      if (this.id !== -1) {
         this.product = res.filter(p => p.id === this.id)[0];
-      }   
+      }
     })
   }
   addToCart(prod: Product) {
